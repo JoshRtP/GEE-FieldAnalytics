@@ -13,9 +13,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import {
   getProject, getFieldSummary, getWeeklyList, runCoverCrop,
   runTillage, getCovariates, getQAFlags, createExport,
+  resetGeeAvailabilityCache,
 } from '@/lib/api';
-import { DEFAULT_ANALYSIS_CONFIG, MOCK_PROJECTS } from '@/lib/mock-data';
-import { resetGeeAvailabilityCache } from '@/lib/api';
+import { DEFAULT_ANALYSIS_CONFIG } from '@/lib/mock-data';
 import { useGEE } from '@/lib/gee-context';
 import type {
   Project, AnalysisConfig, UIMode, LayerVisibility,
@@ -125,7 +125,7 @@ export default function WorkspacePage() {
       setResultsLoading(false);
       setWeeksLoading(false);
     }
-  }, [projectId, toast, geeReady, ee, fieldAsset]);
+  }, [projectId, toast, geeReady]);
 
   const handleFieldSelect = useCallback((fieldId: string) => {
     setSelectedFieldId(fieldId);
@@ -148,7 +148,7 @@ export default function WorkspacePage() {
     } finally {
       setIsRunning(false);
     }
-  }, [projectId, selectedFieldId, config, toast, loadFieldAnalytics, geeReady, ee, fieldAsset]);
+  }, [projectId, selectedFieldId, config, toast, loadFieldAnalytics, geeReady]);
 
   const handleSearch = useCallback((query: string) => {
     if (!query.trim()) return;
