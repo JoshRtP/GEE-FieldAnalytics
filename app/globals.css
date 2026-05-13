@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* TerraNexus dark theme — matches FDCIC repo exactly */
+    --background: 216 28% 7%;        /* #0d1117 */
+    --foreground: 213 31% 91%;       /* #e6edf3 */
+    --card: 215 25% 10%;             /* #161b22 */
+    --card-foreground: 213 31% 91%;
+    --popover: 215 25% 10%;          /* #161b22 */
+    --popover-foreground: 213 31% 91%;
+    --primary: 152 55% 37%;          /* #238636 green */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 18% 15%;        /* #21262d */
+    --secondary-foreground: 213 20% 75%;
+    --muted: 215 18% 15%;            /* #21262d */
+    --muted-foreground: 215 14% 55%; /* #8b949e */
+    --accent: 192 46% 72%;           /* #9AD1DC cyan */
+    --accent-foreground: 218 66% 18%; /* #131f48 */
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 14% 19%;           /* #30363d */
+    --input: 214 14% 19%;            /* #30363d */
+    --ring: 152 55% 37%;
+    --radius: 0.5rem;
+
+    /* Semantic color tokens */
+    --color-success: 142 71% 45%;
+    --color-warning: 38 92% 50%;
+    --color-error: 0 63% 45%;
+    --color-info: 192 46% 72%;
+
+    /* Chart colors */
+    --chart-1: 192 46% 72%;   /* cyan accent */
+    --chart-2: 142 71% 45%;   /* green */
+    --chart-3: 38 92% 50%;    /* amber */
+    --chart-4: 0 63% 45%;     /* red */
+    --chart-5: 213 50% 60%;   /* blue */
+
+    /* TerraNexus brand colors (raw hex for direct use) */
+    --tn-bg: #0d1117;
+    --tn-surface: #161b22;
+    --tn-header: #131f48;
+    --tn-border: #30363d;
+    --tn-hover: #21262d;
+    --tn-border-blue: #1e2f6a;
+    --tn-border-blue-light: #2a3f7a;
+    --tn-accent-cyan: #9AD1DC;
+    --tn-accent-cyan-fg: #131f48;
+    --tn-green: #238636;
+    --tn-green-hover: #2ea043;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #0d1117;
+    color: #e6edf3;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #30363d transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #0d1117;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #30363d;
+    border-radius: 3px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: #484f58;
+  }
+}
+
+/* Map placeholder gradient */
+.map-placeholder {
+  background: linear-gradient(135deg,
+    #0d1117 0%,
+    #161b22 40%,
+    #0d1117 100%
+  );
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.25s ease-out; }
+
+/* Status badge colors */
+.status-completed { background-color: #1a3a2a; color: #3fb950; }
+.status-running   { background-color: #1a2a3a; color: #58a6ff; }
+.status-queued    { background-color: #2e2a1a; color: #d29922; }
+.status-failed    { background-color: #3a1a1a; color: #f85149; }
+.status-cancelled { background-color: #21262d; color: #8b949e; }
+
+/* Cover crop result colors (dark mode) */
+.cover-likely    { background-color: #1a3a2a; color: #3fb950; border-color: #238636; }
+.cover-possible  { background-color: #2e2a1a; color: #d29922; border-color: #9e6a03; }
+.cover-none      { background-color: #21262d; color: #8b949e; border-color: #30363d; }
+.cover-unavail   { background-color: #3a1a1a; color: #f85149; border-color: #da3633; }
+
+/* Tillage result colors (dark mode) */
+.till-notill    { background-color: #1a2a3a; color: #58a6ff; border-color: #1f6feb; }
+.till-reduced   { background-color: #1a2e2e; color: #39d353; border-color: #238636; }
+.till-intensive { background-color: #2e2010; color: #f0883e; border-color: #bd561d; }
+.till-unavail   { background-color: #3a1a1a; color: #f85149; border-color: #da3633; }
